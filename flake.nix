@@ -15,12 +15,11 @@
   outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
   let
       system = "x86_64-linux";
+
+      commonInherits = {
+        inherit nixpkgs home-manager;
+      };
   in {
-    nixosConfigurations."vm" = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./configuration.nix
-      ];
-    };
+    nixosConfigurations = import ./hosts (commonInherits);
   };
 }
