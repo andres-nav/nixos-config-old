@@ -4,7 +4,6 @@ let
 
 in {
   vm = nixpkgs.lib.nixosSystem {
-    system = host.system;
-    modules = host.modules;
+    inherit (host) system modules;
   };
 }

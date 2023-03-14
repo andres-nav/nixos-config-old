@@ -14,8 +14,6 @@
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
   let
-      system = "x86_64-linux";
-
       commonInherits = {
         inherit nixpkgs home-manager;
       };
