@@ -1,9 +1,12 @@
 { nixpkgs, home-manager, ...}:
 let
-  host = import ./virtualbox { inherit nixpkgs home-manager; };
+  hosts = builtins.mapAttrs (name: value: import (./. + "/${name}") { inherit nixpkgs home-manager name; }) 
+    (nixpkgs.lib.attrsets.filterAttrs (name: type: type == "directory") (builtins.readDir ./.));
 
-in {
-  vm = nixpkgs.lib.nixosSystem {
-    inherit (host) system modules;
+  commonInherits = {
+    inherit nixpkgs home-manager;
   };
-}
+in 
+  builtins.mapAttrs (name: attrs: (nixpkgs.lib.nixosSystem {
+    inherit (attrs) system modules;
+  })) hosts

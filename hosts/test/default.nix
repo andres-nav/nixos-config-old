@@ -1,10 +1,6 @@
-{ nixpkgs, home-manager, name, ... }:
+{ nixpkgs, home-manager, ... }:
 let
   system = "x86_64-linux";
-
-  config = {
-    networking.hostName = name;
-  };
 
 in {
   pkgs = nixpkgs {
@@ -15,9 +11,6 @@ in {
   };
 
   modules = [
-    ./config.nix 
-    ./hardware.nix
-
-    { inherit config; }
+    ./config.nix
   ];
 }

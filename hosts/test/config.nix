@@ -1,6 +1,12 @@
 { config, lib, pkgs, inputs, user, ... }:
 {
+  imports =
+    [ 
+      ./hardware.nix
+    ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  networking.hostName = "test";
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -35,12 +41,11 @@
   # hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alice = {
+  users.users.test = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       htop
-      kitty
     ];
   };
 
