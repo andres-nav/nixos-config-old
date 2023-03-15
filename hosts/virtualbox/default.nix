@@ -7,11 +7,16 @@ in {
     inherit system;
     config = {
       allowUnfree = true;
-      allowBroken = true;
     };
   };
 
   modules = [
-    ./configuration.nix
+    ./config.nix
+    # home-manager.nixosModules.home-manager {
+      # home-manager.useGlobalPkgs = true;
+      # home-manager.useUserPackages = true;
+      # home-manager.users.vm = import ./home.nix;
+      # home-manager.verbose = true;
+    # }
   ];
 }

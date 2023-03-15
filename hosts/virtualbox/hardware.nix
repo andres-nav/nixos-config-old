@@ -12,6 +12,11 @@
     extraModulePackages = [ ];
 
     initrd.luks.devices."nixenc".device = "/dev/disk/by-partlabel/primary";
+
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
   };
 
   fileSystems = {
