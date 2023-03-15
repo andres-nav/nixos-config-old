@@ -16,25 +16,24 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = lib.mkDefault "us";
+    useXkbConfig = true; # use xkbOptions in tty.
+  };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
+  services.xserver.windowManager.i3.enable = true;
+  services.greetd.enable = true;
 
 
   
 
   # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "caps:swapescape"; # map caps to escape.
-  #   "ctrl:swap_lalt_lctl"
-  # };
+  services.xserver.layout = "us";
+  services.xserver.xkbOptions = "caps:swapescape,ctrl:swap_lalt_lctl";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -59,6 +58,7 @@
     neovim 
     git
     tmux
+    lazygit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
