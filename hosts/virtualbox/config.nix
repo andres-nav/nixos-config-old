@@ -1,21 +1,6 @@
 { config, lib, pkgs, inputs, user, ... }:
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Set your time zone.
   time.timeZone = "Europe/Madrid";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = lib.mkDefault "us";
-    useXkbConfig = true; # use xkbOptions in tty.
-  };
 
   # Enable the X11 windowing system.
   services = {
@@ -27,8 +12,8 @@
     };
   };
 
-  virtualisation.virtualbox.guest.x11 = true;
-
+  virtualisation.virtualbox.guest.enable = true; 
+  #virtualisation.virtualbox.guest.x11 = true;
 
   # Enable sound.
   # sound.enable = true;
@@ -62,9 +47,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # DO NOT TOUCH THIS
-  system.stateVersion = "22.11";
 
 }
 

@@ -4,6 +4,7 @@ let
 
   config = {
     networking.hostName = name;
+    nixpkgs.hostPlatform = nixpkgs.lib.mkDefault system;
   };
 
 in {
@@ -15,6 +16,7 @@ in {
   };
 
   modules = [
+    ./../base_config.nix
     ./config.nix 
     ./hardware.nix
 
