@@ -2,7 +2,6 @@
 {
   time.timeZone = "Europe/Madrid";
 
-  # Enable the X11 windowing system.
   services = {
     xserver = {
       enable = true;
@@ -12,15 +11,7 @@
     };
   };
 
-  virtualisation.virtualbox.guest.enable = true; 
-  #virtualisation.virtualbox.guest.x11 = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.vm = {
+  users.users.me = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
