@@ -7,7 +7,7 @@
     font = "Lat2-Terminus16";
     keyMap = lib.mkDefault "us";
     useXkbConfig = true; # use xkbOptions in tty
-  }
+  };
 
   # DO NOT TOUCH THIS
   system.stateVersion = "22.11";
