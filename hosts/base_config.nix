@@ -6,7 +6,7 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = lib.mkDefault "us";
-    useXkbConfig = true; # use xkbOptions in tty
+    useXkbConfig = true; 
   };
 
   # DO NOT TOUCH THIS
