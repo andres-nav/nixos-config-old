@@ -14,10 +14,10 @@
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
   let
-    
     commonInherits = {
       inherit nixpkgs home-manager;
     };
+
   in {
     nixosConfigurations = import ./hosts (commonInherits);
   };

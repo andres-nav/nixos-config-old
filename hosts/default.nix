@@ -1,6 +1,6 @@
 { nixpkgs, home-manager, ...}:
 let
-  hosts = builtins.mapAttrs (name: value: import (./. + "/${name}") { inherit nixpkgs home-manager name; }) 
+  hosts = builtins.mapAttrs (hostname: value: import (./. + "/${hostname}") { inherit nixpkgs home-manager hostname; }) 
     (nixpkgs.lib.attrsets.filterAttrs (name: type: type == "directory") (builtins.readDir ./.));
 
   commonInherits = {
@@ -8,5 +8,5 @@ let
   };
 in 
   builtins.mapAttrs (name: attrs: (nixpkgs.lib.nixosSystem {
-    inherit (attrs) system modules;
+    inherit (attrs) system modules specialArgs;
   })) hosts

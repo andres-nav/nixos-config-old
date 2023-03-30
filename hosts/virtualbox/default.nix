@@ -1,9 +1,10 @@
-{ nixpkgs, home-manager, name, ... }:
+{ nixpkgs, home-manager, hostname, ... }:
 let
   system = "x86_64-linux";
+  extraArgs = { admin = "vm"; };
 
   config = {
-    networking.hostName = name;
+    networking.hostName = hostname;
     nixpkgs.hostPlatform = nixpkgs.lib.mkDefault system;
   };
 
@@ -15,10 +16,24 @@ in {
     };
   };
 
+  specialArgs = extraArgs;
+
   modules = [
-    ./../base_config.nix
+    ./../config.nix
     ./config.nix 
     ./hardware.nix
+
+    home-manager.nixosModules.home-manager {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = extraArgs;
+      home-manager.users."${extraArgs.admin}" = {
+        imports = [
+	  ./../home.nix
+	  ./home.nix
+	];
+      };
+    }
 
     { inherit config; }
   ];
