@@ -14,9 +14,12 @@
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
   let
+    dotfiles = config.lib.file.mkOutOfStoreSymlink "/test/dotfiles";
+
     commonInherits = {
-      inherit nixpkgs home-manager;
+      inherit nixpkgs home-manager dotfiles;
     };
+
 
   in {
     nixosConfigurations = import ./hosts (commonInherits);
