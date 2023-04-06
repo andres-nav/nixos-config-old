@@ -4,6 +4,7 @@ let
 in {
   imports = [
     "${modulesPath}/editors/emacs.nix"
+
   ];
 
 }
