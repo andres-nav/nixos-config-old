@@ -10,8 +10,6 @@ in {
 
     "${modulesPath}/desktop/i3.nix"
     "${modulesPath}/desktop/rofi.nix"
-
-    "${modulesPath}/shell/kitty.nix"
   ];
 
 }
