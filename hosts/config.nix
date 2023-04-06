@@ -19,10 +19,15 @@
   };
 
   programs = {
-    fish.enable = true;
+    fish = {
+      enable = true;
+      interactiveShellInit = "";
+    };
   };
 
   users.defaultUserShell = pkgs.fish;
+
+
 
   users.users."${admin}" = {
     isNormalUser = true;
@@ -32,9 +37,14 @@
   environment.systemPackages = with pkgs; [
     git
     htop
+    neovim
   ];
 
   services.openssh.enable = true;
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
 
 
   # DO NOT TOUCH THIS

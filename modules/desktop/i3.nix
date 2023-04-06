@@ -1,6 +1,14 @@
 { config, lib, pkgs, ... }:
-{
-  xsession.windowManager.i3.enable = true;
+let
+  mod = "Mod4";
+in {
+  xsession.windowManager.i3 = {
+    enable = true;
+    config = {
+      modifier = mod;
+
+    };
+  };
 
   programs.i3status = {
     enable = true;
