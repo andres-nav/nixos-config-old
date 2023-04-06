@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, dotfiles, ... }:
 let
   mod = "Mod4";
 in {
@@ -6,22 +6,9 @@ in {
     enable = true;
     config = {
       modifier = mod;
-
     };
+
   };
 
-  programs.i3status = {
-    enable = true;
-
-    modules = {
-      "volume master" = {
-        position = 1;
-	settings = {
-	  format = "vol %volume";
-	  format_muted = "mut (%volume)";
-	  device = "pulse:1";
-	};
-      };
-    };
-  };
+  xdg.configFile.i3.source = "${dotfiles}/i3";
 }

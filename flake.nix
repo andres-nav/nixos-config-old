@@ -8,14 +8,18 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
 
+    dotfiles = {
+      url = "github:andres-nav/dotfiles";
+      flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
+  outputs = { self, nixpkgs, home-manager, dotfiles, ... } @ inputs: 
   let
     commonInherits = {
-      inherit nixpkgs home-manager;
+      inherit nixpkgs home-manager dotfiles;
     };
 
   in {

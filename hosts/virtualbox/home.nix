@@ -1,4 +1,4 @@
-{ config, lib, pkgs, admin, ... }:
+{ config, lib, pkgs, dotfiles, admin, ... }:
 let 
   modulesPath = ./../../modules;
 in {

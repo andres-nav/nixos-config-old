@@ -1,7 +1,10 @@
-{ nixpkgs, home-manager, hostname, ... }:
+{ nixpkgs, home-manager, dotfiles, hostname, ... }:
 let
   system = "x86_64-linux";
-  extraArgs = { admin = "vm"; };
+  extraArgs = { 
+    admin = "vm";
+    inherit dotfiles;
+  };
 
   config = {
     networking.hostName = hostname;
