@@ -22,8 +22,8 @@ in {
   specialArgs = extraArgs;
 
   modules = [
-    ./../config.nix
-    ./config.nix 
+    ./../configuration.nix
+    ./configuration.nix 
     ./hardware.nix
 
     home-manager.nixosModules.home-manager {

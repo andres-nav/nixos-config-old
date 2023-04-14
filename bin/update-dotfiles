@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-nix flake lock --update-input dotfiles
-sudo nixos-rebuild switch --flake ./..#$(hostname)

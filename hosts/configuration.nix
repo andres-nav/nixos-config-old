@@ -27,8 +27,6 @@
 
   users.defaultUserShell = pkgs.fish;
 
-
-
   users.users."${admin}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -36,7 +34,6 @@
 
   environment.systemPackages = with pkgs; [
     git
-    htop
     neovim
   ];
 
